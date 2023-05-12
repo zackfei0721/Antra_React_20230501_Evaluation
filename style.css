@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  
+  #app {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 80%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+  }
+  
+  .inventory-container,
+  .cart-container {
+    flex: 1;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.add,
+  button.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  button.subtract,
+  button.delete {
+    background-color: #F44336;
+    color: white;
+  }
+  
+  button.add:hover,
+  button.add-to-cart:hover {
+    background-color: #45a049;
+  }
+  
+  button.subtract:hover,
+  button.delete:hover {
+    background-color: #da190b;
+  }
+  
+  .checkout-btn {
+    background-color: #008CBA;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .checkout-btn:hover {
+    background-color: #007B9A;
+  }
