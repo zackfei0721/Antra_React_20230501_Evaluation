@@ -46,7 +46,7 @@ const Model = (() => {
     }
 
     set inventory(newInventory) {
-      // Add a new property 'selectedQuantity' to each item.
+      // Add a new property 'selectedQuantity' to each item
       console.log(newInventory);
       this.#inventory = newInventory.map(item => ({
         ...item,
