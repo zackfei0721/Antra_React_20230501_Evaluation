@@ -1,27 +1,44 @@
 const API = (() => {
+
   const URL = "http://localhost:3000";
-  const getCart = () => fetch(`${URL}/cart`).then(res => res.json());
+  const getCart = () => {
+    return fetch(`${URL}/cart`)
+    .then(res => res.json());
+  };
+  const getInventory = () => {
+    return fetch(`${URL}/inventory`)
+    .then(res => res.json());
+  };
 
-  const getInventory = () => fetch(`${URL}/inventory`).then(res => res.json());
+  const addToCart = (item) => {
 
-  const addToCart = (item) => fetch(`${URL}/cart`, {
+    return fetch(`${URL}/cart`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(item)
   }).then(res => res.json());
+  };  
 
-  const updateCart = (id, newAmount) => fetch(`${URL}/cart/${id}`, {
+  const updateCart = (id, newAmount) => {
+    return fetch(`${URL}/cart/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ quantity: newAmount })
   }).then(res => res.json());
+  };
 
-  const deleteFromCart = (id) => fetch(`${URL}/cart/${id}`, {
-     method: 'DELETE' });
+  const deleteFromCart = (id) => {
+    return fetch(`${URL}/cart/${id}`, {
+     method: 'DELETE'
+   });
+  };
 
-  const checkout = () => getCart().then((data) =>
-    Promise.all(data.map((item) => deleteFromCart(item.id)))
-  );
+  const checkout = () => {
+    // you don't need to add anything here
+    return getCart().then((data) =>
+      Promise.all(data.map((item) => deleteFromCart(item.id)))
+    );
+  };
 
   return {
     getCart,
@@ -176,10 +193,13 @@ const Controller = ((model, view) => {
     document.addEventListener('click', (event) => {
       const parentElement = event.target.parentElement;
       if (!parentElement) return;
+      
       const itemId = parentElement.getAttribute('data-id');
       if (!itemId) return;
+      
       const item = model.state.inventory.find(i => i.id === Number(itemId));
       if (!item) return;
+      
       if (event.target.matches('.add')) {
         handleIncreaseAmount(item);
       } else if (event.target.matches('.subtract')) {
