@@ -170,6 +170,7 @@ const Controller = ((model, view) => {
   };
 
   const handleAddToCart = (item) => {
+    if(item.selectedQuantity === 0) return; // fixed the bug where item with 0 selected quantity can also be added to cart
     const cartItem = model.state.cart.find(i => i.content === item.content);
     if (cartItem) {
       handleUpdateAmount(cartItem, item.selectedQuantity);
